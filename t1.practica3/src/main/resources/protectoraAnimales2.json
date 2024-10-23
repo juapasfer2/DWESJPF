@@ -1,0 +1,19 @@
+{
+  "animales" : [ {
+    "especie" : "Perro",
+    "edad" : 3,
+    "sexo" : "Hembra",
+    "fechaIngreso" : "2024-01-15",
+    "adoptado" : true,
+    "id" : 1,
+    "nombre" : "Luna"
+  }, {
+    "especie" : "Gato",
+    "edad" : 2,
+    "sexo" : "Macho",
+    "fechaIngreso" : "2024-01-15",
+    "adoptado" : false,
+    "id" : 2,
+    "nombre" : "Miau"
+  } ]
+}
