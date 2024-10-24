@@ -5,6 +5,7 @@ public class Asignatura {
     private String nombreAsignatura;
     private String aula;
     private boolean obligatoria;
+    private Profesor profesor;
 
     public int getIdAsignatura() {
         return idAsignatura;

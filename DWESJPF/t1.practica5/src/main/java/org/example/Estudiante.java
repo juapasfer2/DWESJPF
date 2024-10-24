@@ -1,5 +1,7 @@
 package org.example;
 import java.util.Date;
+import java.util.List;
+
 public class Estudiante {
     private int id_estudiante;
     private String nombre;
@@ -7,6 +9,8 @@ public class Estudiante {
     private int id_casa;
     private int ano_curso;
     private Date fecha_nacimiento;
+    private Mascota mascota;
+    private List<Asignatura> asignaturas;
 
     public int getId_estudiante() {
         return id_estudiante;
