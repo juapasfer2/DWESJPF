@@ -82,12 +82,10 @@ public class Service {
                         break;
                     }
                 }
-
                 if (!tieneMascota) {
                     listaEstudiantes.add(estudiante);
                 }
             }
-
             this.cerrarRecursos(conexion, declaracion, rs);
         } catch (SQLException ex) {
             System.err.println(ex.getClass().getName() + ": " + ex.getMessage());
@@ -101,7 +99,6 @@ public class Service {
 
         try {
             this.abrirConexion();
-
             String consulta = "SELECT e.nombre, e.apellido, c.nombre_casa " +
                     "FROM Estudiante e " +
                     "JOIN Casa c ON e.id_casa = c.id_casa";
@@ -180,11 +177,8 @@ public class Service {
 
     public List<String> obtenerPromedioCalificacionesPorEstudiante() {
         List<String> listaPromedios = new ArrayList<>();
-
         try {
             this.abrirConexion();
-
-            // Consulta SQL para obtener el promedio de calificaciones de cada estudiante
             String consulta = "SELECT e.nombre, e.apellido, AVG(ea.calificacion) AS promedio " +
                     "FROM Estudiante e " +
                     "INNER JOIN Estudiante_Asignatura ea ON e.id_estudiante = ea.id_estudiante " +
@@ -206,11 +200,8 @@ public class Service {
 
     public  List<String> obtenerNumeroEstudiantesQuintoAno() {
         List<String> listaEstudiantesEnQuinto = new ArrayList<>();
-
         try {
             this.abrirConexion();
-
-            // Consulta SQL para obtener el número de estudiantes de quinto año por casa
             String consulta = "SELECT c.nombre_casa, COUNT(e.id_estudiante) AS num_estudiantes " +
                     "FROM Casa c " +
                     "LEFT JOIN Estudiante e ON c.id_casa = e.id_casa " +
@@ -219,7 +210,6 @@ public class Service {
             System.out.println(consulta);
             ResultSet rs = declaracion.executeQuery(consulta);
 
-            // Procesar el resultado
             while (rs.next()) {
                 String nombreCasa = rs.getString("nombre_casa");
                 int numEstudiantes = rs.getInt("num_estudiantes");
@@ -238,14 +228,11 @@ public class Service {
         List<String> mejorEstudiante = new ArrayList<>();
         try {
             this.abrirConexion();
-
-
             String consulta = "SELECT e.nombre, e.apellido, ea.calificacion " +
                     "FROM Estudiante e " +
                     "JOIN Estudiante_Asignatura ea ON e.id_estudiante = ea.id_estudiante " +
                     "JOIN Asignatura a ON ea.id_asignatura = a.id_asignatura " +
                     "WHERE a.nombre_asignatura = '" + nombreAsignatura + "' " +"ORDER BY ea.calificacion DESC " + "LIMIT 1";
-
             System.out.println(consulta);
             ResultSet rs = declaracion.executeQuery(consulta);
 

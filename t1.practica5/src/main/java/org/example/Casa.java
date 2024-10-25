@@ -1,11 +1,14 @@
 package org.example;
 
+import java.util.List;
+
 public class Casa {
     private int id_casa;
     private String nombre_casa;
     private String fundador;
     private String jefe_casa;
     private String fantasma;
+
 
     public int getId_casa() {
         return id_casa;

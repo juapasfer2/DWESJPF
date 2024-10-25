@@ -1,31 +1,23 @@
 package org.example;
-import java.util.List;
-import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Service service = new Service("jdbc:postgresql://database-daw.c7yg0m8y0202.us-east-1.rds.amazonaws.com:5432/f12006","postgres", "12345678");
-
-        List<Estudiante> estudiantes = service.estudiantesPorCasa("Gryffindor");
-        for(Estudiante estudiante : estudiantes){
-            System.out.print(estudiante.getNombre() + ", ");
-        }
+        service.cargarBaseDeDatos();
         System.out.println();
+        service.estudiantesPorCasa("Gryffindor");
         System.out.println();
-
-        List<Asignatura> asignaturas = service.asignaturasObligatorias();
-        for(Asignatura asignatura : asignaturas){
-            System.out.print(asignatura.getNombreAsignatura() + ", ");
-        }
+        service.asignaturasObligatorias();
         System.out.println();
+        service.obtenerMascotaDe("Cho");
         System.out.println();
-
-        Mascota mascota = service.obtenerMascotaDe("Harry");
-        if(mascota.getNombre()!=null){
-            System.out.println(mascota);
-
-        }
-
-
-
+        service.estudiantesSinMascota();
+        System.out.println();
+        service.promedioEstudiante("Harry Potter");
+        System.out.println();
+        service.numEstudiantesPorCasa();
+        System.out.println();
+        service.estudiantesDeAsignatura("Defensa Contra las Artes Oscuras");
+        System.out.println();
+        service.insertarNuevoEstudiante("paco", "garcia",1, 5, "1980-07-31");
     }
 }
