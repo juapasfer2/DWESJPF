@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Detalle Casa</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>ESTUDIANTES FILTRADOS</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Patronus</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.getName()}">nombre</td>
+        <td th:text="${student.getPatronus()}">Patronus</td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>

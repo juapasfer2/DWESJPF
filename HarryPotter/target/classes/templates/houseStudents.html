@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Detalle Casa</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<h1 th:text="${house.getName().toUpperCase()}"></h1>
+<ul>
+    <li th:text="${house.getName()}">NOMBRE</li>
+    <li th:text="${house.getMascot()}">MASCOTA</li>
+    <li th:text="${house.getFounder()}">FUNDADOR</li>
+</ul>
+<h1>LISTA ESTUDIANTES</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Casa</th>
+        <th>Patronus</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td >
+            <a th:text="${student.getName()}" th:href="@{/student(name=${student.getName()})}" ></a>
+        </td>
+        <td th:text="${student.getHouse().getName()}">Casa</td>
+        <td th:text="${student.getPatronus()}">Patronus</td>
+    </tr>
+</table>
+</body>
+</html>

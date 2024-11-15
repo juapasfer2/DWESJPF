@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Inicio</title>
+  <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>
+  <a th:text="CASAS"  th:href="@{/houses}"> Casas </a>
+</h1>
+<table>
+  <tr>
+    <th>Casa</th>
+    <th>Estudiante</th>
+  </tr>
+  <tr>
+    <td>
+      <a th:text="${casa.getName()}" th:href="@{/house/{name}(name=${casa.getName()})}"></a>
+    </td>
+    <td>
+      <a th:text="${student.getName()}" th:href="@{/student(name=${student.getName()})}"></a>
+    </td>
+  </tr>
+</table>
+
+
+
+
+</body>
+</html>

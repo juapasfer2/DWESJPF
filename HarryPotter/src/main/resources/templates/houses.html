@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Casas</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>CASAS</h1>
+<table>
+    <tr>
+        <th>NOMBRE</th>
+    </tr>
+    <tr th:each="house : ${houses}">
+        <td>
+            <a th:href="@{/house/{name}(name=${house.getName()})}" th:text="${house.getName()}">Name</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
