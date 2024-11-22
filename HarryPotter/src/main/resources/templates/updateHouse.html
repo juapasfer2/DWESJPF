@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Actualizar Casa</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>Actualizar Casa</h1>
+
+<form action="#" th:action="@{/house/update/{name}(name=${house.getName()})}" th:object="${house}" method="post">
+
+    <p>NAME: <input type="text" th:field="*{name}"></p>
+    <p>MASCOTA: <input type="text" th:field="*{mascot}"></p>
+    <p>FOUNDER: <input type="text" th:field="*{founder}"></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form >
+</body>
+</html>

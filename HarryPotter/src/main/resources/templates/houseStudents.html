@@ -12,6 +12,11 @@
     <li th:text="${house.getMascot()}">MASCOTA</li>
     <li th:text="${house.getFounder()}">FUNDADOR</li>
 </ul>
+
+<p>
+    <a th:href="@{/house/createstudent/{name}(name=${house.getName()})}">Crear</a>
+</p>
+
 <h1>LISTA ESTUDIANTES</h1>
 <table>
     <tr>

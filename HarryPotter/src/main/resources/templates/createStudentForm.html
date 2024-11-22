@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>CrearEstudiante</title>
+  <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<form action="#" th:action="@{/house/createstudent/{name}(name=${house.getName()})}" th:object="${student}" method="post">
+  <p>NAME: <input type="text" th:field="*{name}"></p>
+  <p>HOUSE: <input type="text" th:value="${house.getName()}" readonly></p>
+  <p>PATRONUS: <input type="text" th:field="*{patronus}"></p>
+  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form >
+</body>
+</html>

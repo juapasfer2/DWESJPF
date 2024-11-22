@@ -7,6 +7,9 @@
 </head>
 <body>
 <h1>CASAS</h1>
+<p>
+    <a th:text="Añadir"  th:href="@{/houses/create}"> AgregarCasa </a>
+</p>
 <table>
     <tr>
         <th>NOMBRE</th>
@@ -14,6 +17,8 @@
     <tr th:each="house : ${houses}">
         <td>
             <a th:href="@{/house/{name}(name=${house.getName()})}" th:text="${house.getName()}">Name</a>
+            <a th:href="@{/house/update/{name}(name=${house.getName()})}">Editar</a>
+            <a th:href="@{/house/delete/{name}(name=${house.getName()})}">Eliminar</a>
         </td>
     </tr>
 </table>

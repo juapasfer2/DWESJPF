@@ -8,4 +8,6 @@ public interface StudentService {
     List<Student> getStudents();
     Student getStudentByName(String name);
     List<Student> getStudentsByHouse(String house);
+    void addStudentToHouse(String houseName, Student student);
+    void updateStudent(String name, String houseName, Student student);
 }

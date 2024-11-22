@@ -1,5 +1,6 @@
 package org.example.harrypotter.controllers;
 
+import org.example.harrypotter.entities.House;
 import org.example.harrypotter.entities.Student;
 import org.example.harrypotter.repositories.HouseRepository;
 import org.example.harrypotter.repositories.StudentRepository;
@@ -10,6 +11,8 @@ import org.example.harrypotter.services.StudentServiceImplementation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -39,7 +42,6 @@ public class StudentController {
         }
         if (name !=null && patronus !=null) {
             model.addAttribute("students", students.stream().filter(s -> s.getName().toLowerCase().startsWith(name.toLowerCase())).filter(s-> s.getPatronus().toLowerCase().startsWith(patronus.toLowerCase())).toList());
-
         }
         if(name==null && patronus !=null){
             model.addAttribute("students", students.stream().filter(s -> s.getPatronus().toLowerCase().startsWith(patronus.toLowerCase())).toList());
@@ -48,5 +50,15 @@ public class StudentController {
         return "studentsbypatronusandname";
     }
 
+    @GetMapping("/student/update/{name}")
+    public String updateStudent(@PathVariable String name, Model model){
+        model.addAttribute("student", studentService.getStudentByName(name));
+        return "updateStudent";
+    }
+    @PostMapping("/student/update/{name}")
+    public String updateStudent(@PathVariable String name, @RequestParam String houseName, Student student) {
+        studentService.updateStudent(name, houseName, student);
+        return "redirect:/house/" + houseName;
+    }
 
 }

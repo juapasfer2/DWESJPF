@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
@@ -41,8 +42,47 @@ public class HouseController {
         return "houseStudents";
     }
 
+    @GetMapping("/houses/create")
+    public String createHouse(Model model){
+        model.addAttribute("house", new House());
+        return "houseCreate";
+    }
+    @PostMapping("houses/create")
+    public String createHouse(House house){
+        houseService.addHouse(house);
+        return "redirect:/houses";
+    }
 
+    @GetMapping("/house/update/{name}")
+    public String updateHouse(@PathVariable String name , Model model){
+        model.addAttribute("house", houseService.getHouseByName(name));
+        return"updateHouse";
+    }
 
+    @PostMapping("/house/update/{name}")
+    public String updateHouse(@PathVariable String name, House house){
+        houseService.updateHouse(name, house);
+        return "redirect:/houses";
+    }
+
+    @GetMapping("/house/delete/{name}")
+    public String deleteHouse(@PathVariable String name){
+        houseService.deleteHouse(name);
+        return "redirect:/houses";
+    }
+    //
+    @GetMapping("/house/createstudent/{name}")
+    public String createStudent(@PathVariable String name, Model model){
+        model.addAttribute("house", houseService.getHouseByName(name));
+        model.addAttribute("student", new Student());
+        return "createStudentForm";
+    }
+    @PostMapping("house/createstudent/{name}")
+    public String createStudent(@PathVariable String name, Student student){
+        student.setHouse(houseService.getHouseByName((name)));
+        studentService.addStudentToHouse(name, student);
+        return "redirect:/house/{name}";
+    }
 
 
 }

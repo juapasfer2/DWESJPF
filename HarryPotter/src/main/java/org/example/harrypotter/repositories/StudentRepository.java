@@ -45,4 +45,23 @@ public class StudentRepository {
         }
         return studentsByHouse;
     }
+    public void addStudentToHouse(String houseName, Student student){
+        House house = new HouseRepository().getHouse(houseName);
+        if (house == null) {
+            throw new IllegalArgumentException("House not found: " + houseName);
+        }
+        student.setHouse(house);
+        students.add(student);
+    }
+    public void updateStudent(String studentName, String houseName, Student student){
+        House house = new HouseRepository().getHouse(houseName);
+        if (house == null) {
+            throw new IllegalArgumentException("House not found: " + houseName);
+        }
+        student.setHouse(house);
+        students.removeIf(student1 -> student1.getName().equals(studentName));
+        students.add(student);
+
+    }
+
 }
