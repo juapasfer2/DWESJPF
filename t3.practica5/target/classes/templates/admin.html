@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Zona Administrativa</title>
+</head>
+<body>
+<h1>Zona Administrativa</h1>
+<p>Hola, administrador <strong th:text="${username}"></strong>. Bienvenido a la sección de administración.</p>
+<a th:href="@{/logout}">Cerrar Sesión</a>
+</body>
+</html>
